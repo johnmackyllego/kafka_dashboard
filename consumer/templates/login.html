@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% load bootstrap3 %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+
+{% if request.user.is_authenticated %}
+    {# include 'servers/server_list.html' #}
+{% else %}
+    <div class="col-md-4"></div>
+    <div style="margin-top:5%;"class="col-md-4">
+        <form method="post">
+        {% csrf_token %}
+        <div class="panel panel-default">
+            <div class="panel-heading">Account</div>
+            <div class="panel-body">
+                {% bootstrap_form form layout='inline' %}
+            </div>
+            <div class="panel-footer">
+                <button class="btn btn-success btn-md"type="submit">Continue &raquo;</button>
+            </div>
+        </div>
+        </form>
+    </div>
+    <div class="col-md-4"></div>
+{% endif %}
+
+{% endblock %}

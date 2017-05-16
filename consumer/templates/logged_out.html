@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}See you!{% endblock %}
+
+{% block content %}
+<div class="alert alert-success">
+    <span class="glyphicon glyphicon-ok-sign"></span>
+    &nbsp;
+    <text>You have been successfully logged out.</text>
+</div>
+<hr>
+<center><a href="{% url 'login' %}">Log in into another account</a></center>
+{% endblock %}
