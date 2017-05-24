@@ -79,11 +79,11 @@ WSGI_APPLICATION = 'kafka.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'logfile',
-        'USER': 'logfileuser',
-        'PASSWORD': 'postgres',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': os.getenv('DB_NAME', 'logfile'),
+        'USER': os.getenv('DB_USER', 'hmmmacky'),
+        'PASSWORD': os.getenv('DB_PASSWORD', 'hmmmacky'),
+        'HOST': os.getenv('DB_HOST', 'localhost'),
+        'PORT': os.getenv('DB_PORT', '5432')
     }
 }
 

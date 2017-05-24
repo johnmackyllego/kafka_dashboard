@@ -1,20 +1,18 @@
 {% extends 'base.html' %}
 
-{% block title %}Sign-in{% endblock %}
+{% block title %}Ayannah{% endblock %}
 
 {% block content %}
 <div>
 {% if user.is_authenticated %}
-    <h2>Logfile</h2>
-    <hr>
     <p>
         <table id="logfile" class="table table-bordered">
             <thead>
                 <tr>
                     <th>Sender</th>
                     <th>Receiver</th>
-                    <th>Raw</th>
-                    <th>Timestamp</th>
+                    <th>Message</th>
+                    <th>Date/Time</th>
                 </tr>
             </thead>
             <tbody>

@@ -4,13 +4,17 @@
 <head>
     <meta charset="utf-8">
     <title>{% block title %}Admin Login{% endblock %}</title>
-    
+    <link rel="icon" href="favicon.ico"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="{% static 'ie10-viewport-bug-workaround.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'ie-emulation-modes-warning.js' %}" />
+    <meta http-equiv="refresh" content="60">
+    
+    <!-- DataTables CSS -->
+    <link href="{% static 'vendor/datatables-plugins/dataTables.bootstrap.css' %}" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="{% static 'jquery.dataTables.min.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'dataTables.bootstrap.min.css' %}" />
+    <!-- DataTables Responsive CSS -->
+    <link href="{% static 'vendor/datatables-responsive/dataTables.responsive.css' %}" rel="stylesheet %}">    
     
     </head>
 <body>
@@ -18,13 +22,21 @@
     <nav class="navbar navbar-default navbar-static-top">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="{% url 'home' %}">System Name</a>
+<!--
+                <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'images/ayannah.png' %}" alt="Dispute Bills"></a>
+-->
+                <a class="navbar-brand" href="{% url 'home' %}"><strong>Ayannah Consumer</strong></a>
             </div>
+
             {% if user.is_authenticated %}
+            <div class="nav navbar-nav">
+                <li class="active"><a href="{% url 'home' %}">Dashboard</a></li>
+            </div>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> {{ user.username }} <span class="caret"></span></a>
                     <ul class="dropdown-menu">
+                        <li><a href="/admin/"><span class="glyphicon glyphicon-cog"></span> Manage</a></li>
                         <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
                     </ul>
                 </li>
@@ -36,7 +48,7 @@
             {% endif %}
         </div>
     </nav>
-    <div class="container">
+    <div class="container-fluid">
         {% block content %}
         {% endblock %}
     </div>
@@ -44,15 +56,10 @@
     <script src="{% static 'bootstrap.min.js' %}"></script>
     
     <!-- DataTables JavaScript -->
-    <script src="{% static 'jquery.dataTables.min.js' %}"></script>
-    <script src="{% static 'dataTables.bootstrap.min.js' %}"></script>
-    
-    <script>
-        $(function(){
-            $("#logfile").dataTable();
-        })
-    </script>
-    
+    <script src="{% static 'vendor/datatables/js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'vendor/datatables-plugins/dataTables.bootstrap.min.js' %}"></script>
+    <script src="{% static 'vendor/datatables-responsive/dataTables.responsive.js' %}"></script>
+    <script>$('#logfile').DataTable( {"lengthChange": false,"order": [[ 3, "desc" ]],"bStateSave": true});</script>
     <script src="{% static 'ie10-viewport-bug-workaround.js' %}"></script>
 </body>
 </html>

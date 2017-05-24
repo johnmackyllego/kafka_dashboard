@@ -5,6 +5,7 @@ from django.views.generic.base import TemplateView
 from consumer import views
 
 urlpatterns = [
+    url(r'^admin/', admin.site.urls),
     url(r'^$', views.MessageView.as_view(), name='home'),
     url(r'^aa/', include('consumer.urls', namespace = 'consumer')),
     url(r'^login/$', auth_views.login, {'template_name': 'login.html'}, name='login'),
